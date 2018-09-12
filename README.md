@@ -1,3 +1,16 @@
+Public Fork
+===================================================
+
+This fork removes the reference to the pushwoosh-gcm library which causes duplicate push notifications on Android when used in conjunction with the cordova-firebase-plugin.
+
+NB: In order to preserve the Pushwoosh functionality, the Firebase router should not catch the notifications.
+In order to achieve this, install the cordova-custom-config plugin (https://github.com/dpa99c/cordova-custom-config) and add the following lines to the android section of your config.xml:
+
+```
+<custom-preference delete="true" name="android-manifest/application/service @android:name='org.apache.cordova.firebase.FirebasePluginMessagingService']" />
+<custom-preference delete="true" name="android-manifest/application/service[@android:name='org.apache.cordova.firebase.FirebasePluginInstanceIDService']" />
+```
+
 Cordova Pushwoosh Push Notifications plugin
 ===================================================
 
